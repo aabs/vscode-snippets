@@ -1,4 +1,12 @@
 {
+	"class": {
+		"scope": "turtle",
+		"prefix": "/c",
+		"body": [
+			"$1 rdf:type owl:Class $0"
+		],
+		"description": "declare a class"
+	},
 	"add label": {
 		"scope": "turtle",
 		"prefix": "rlab",
