@@ -1,451 +1,443 @@
 {
-"add label": {
-"scope": "turtle",
-"prefix": "rlab",
-"body": [
-"rdfs:label \"$1\"@en $0"
-],
-"description": "insert an rdfs comment"
-},
-"add comment": {
-"scope": "turtle",
-"prefix": "rcom",
-"body": [
-"rdfs:comment \"$1\" $0"
-],
-"description": "insert an rdfs comment"
-},
-"object property": {
-"scope": "turtle",
-"prefix": "ropr",
-"body": [
-	":$1 rdf:type owl:ObjectProperty ;",
-	"	rdfs:comment \"$4\" ;",
-	"	rdfs:domain :$2 ;",
-	"	rdfs:range :$3 . $0"
-	],
-"description": "create an object property"
-},
-"time value": {
-"scope": "turtle",
-"prefix": "rtime",
-"body": [
-	" [ a time:Instant; time:inXSDDate \"$1\"^^xsd:date ]$0"
-],
-"description": "create a time instant"
-},
-"intersect class": {
-"scope": "turtle",
-"prefix": "rintersect",
-"body": [
-	" $1 owl:subClassOf [ a owl:Class;",
-	"	owl:intersectionOf ($2 $3)",
-	"]  .$0"
-],
-"description": "A class defined as being the intersect of two others"
-},
-{
-"class intersection": {
-	"scope":"turtle", 
-	"prefix":"/ci",
-	"body": [
+	"add label": {
+		"scope": "turtle",
+		"prefix": "rlab",
+		"body": [
+			"rdfs:label \"$1\"@en $0"
+		],
+		"description": "insert an rdfs comment"
+	},
+	"add comment": {
+		"scope": "turtle",
+		"prefix": "rcom",
+		"body": [
+			"rdfs:comment \"$1\" $0"
+		],
+		"description": "insert an rdfs comment"
+	},
+	"object property": {
+		"scope": "turtle",
+		"prefix": "ropr",
+		"body": [
+			"$1 rdf:type owl:ObjectProperty ; rdfs:comment \"$4\"; rdfs:domain :$2 ; rdfs:range :$3 . $0"
+		],
+		"description": "create an object property"
+	},
+	"time value": {
+		"scope": "turtle",
+		"prefix": "rtime",
+		"body": [
+			" [ a time:Instant; time:inXSDDate \"$1\"^^xsd:date ]$0"
+		],
+		"description": "create a time instant"
+	},
+	"intersect class": {
+		"scope": "turtle",
+		"prefix": "rintersect",
+		"body": [
+			" $1 owl:subClassOf [ a owl:Class;",
+			"    owl:intersectionOf ($2 $3)",
+			"]  .$0"
+		],
+		"description": "A class defined as being the intersect of two others"
+	},
+	"class intersection": {
+		"scope": "turtle",
+		"prefix": "/ci",
+		"body": [
 			"[ rdf:type owl:Class; owl:intersectionOf ( C1…Cn ) ]"
-			]
-		},
-"class union": {
-	"scope":"turtle", 
-	"prefix":"/cu",
-	"body": [
+		]
+	},
+	"class union": {
+		"scope": "turtle",
+		"prefix": "/cu",
+		"body": [
 			"[ rdf:type owl:Class; owl:unionOf ( C1…Cn ) ]"
-			]
-		},
-"class complement": {
-	"scope":"turtle", 
-	"prefix":"/cc",
-	"body": [
+		]
+	},
+	"class complement": {
+		"scope": "turtle",
+		"prefix": "/cc",
+		"body": [
 			"[ rdf:type owl:Class; owl:complementOf C ]"
-			]
-		},
-"class enumeration": {
-	"scope":"turtle", 
-	"prefix":"/ce",
-	"body": [
+		]
+	},
+	"class enumeration": {
+		"scope": "turtle",
+		"prefix": "/ce",
+		"body": [
 			"[ rdf:type owl:Class; owl:oneOf ( C1…Cn ) ]"
-			]
-		},
-"subclass": {
-	"scope":"turtle", 
-	"prefix":"/csub",
-	"body": [
+		]
+	},
+	"subclass": {
+		"scope": "turtle",
+		"prefix": "/csub",
+		"body": [
 			"C1 rdfs:subClassOf C2."
-			]
-		},
-"equivalent classes": {
-	"scope":"turtle", 
-	"prefix":"/cequ",
-	"body": [
+		]
+	},
+	"equivalent classes": {
+		"scope": "turtle",
+		"prefix": "/cequ",
+		"body": [
 			"Cj owl:equivalentClass Cj+1."
-			]
-		},
-"disjoint classes": {
-	"scope":"turtle", 
-	"prefix":"/cd",
-	"body": [
+		]
+	},
+	"disjoint classes": {
+		"scope": "turtle",
+		"prefix": "/cd",
+		"body": [
 			"C1 owl:disjointWith C2."
-			]
-		},
-"pairwise disjoint classes": {
-	"scope":"turtle", 
-	"prefix":"/cda",
-	"body": [
+		]
+	},
+	"pairwise disjoint classes": {
+		"scope": "turtle",
+		"prefix": "/cda",
+		"body": [
 			"_:x rdf:type owl:AllDisjointClasses. _:x owl:members ( C1 … Cn )."
-			]
-		},
-"disjoint union": {
-	"scope":"turtle", 
-	"prefix":"/cdu",
-	"body": [
+		]
+	},
+	"disjoint union": {
+		"scope": "turtle",
+		"prefix": "/cdu",
+		"body": [
 			"CN owl:disjointUnionOf ( C1… Cn )."
-			]
-		},
-"universal": {
-	"scope":"turtle", 
-	"prefix":"/pru",
-	"body": [
+		]
+	},
+	"universal": {
+		"scope": "turtle",
+		"prefix": "/pru",
+		"body": [
 			"_:x rdf:type owl:Restriction. _:x owl:onProperty R. _:x owl:allValuesFrom D."
-			]
-		},
-"existential": {
-	"scope":"turtle", 
-	"prefix":"/pre",
-	"body": [
+		]
+	},
+	"existential": {
+		"scope": "turtle",
+		"prefix": "/pre",
+		"body": [
 			"_:x rdf:type owl:Restriction._:x owl:onProperty P._:x owl:someValuesFrom C"
-			]
-		},
-"individual value": {
-	"scope":"turtle", 
-	"prefix":"/pri",
-	"body": [
+		]
+	},
+	"individual value": {
+		"scope": "turtle",
+		"prefix": "/pri",
+		"body": [
 			"_:x rdf:type owl:Restriction. _:x owl:onProperty P. _:x owl:hasValue a."
-			]
-		},
-"local reflexivity": {
-	"scope":"turtle", 
-	"prefix":"/prx",
-	"body": [
+		]
+	},
+	"local reflexivity": {
+		"scope": "turtle",
+		"prefix": "/prx",
+		"body": [
 			"_:x rdf:type owl:Restriction. _:x owl:onProperty P. _:x owl:hasSelf \"true\"^^xsd:boolean."
-			]
-		},
-"exact cardinality": {
-	"scope":"turtle", 
-	"prefix":"/prc",
-	"body": [
+		]
+	},
+	"exact cardinality": {
+		"scope": "turtle",
+		"prefix": "/prc",
+		"body": [
 			"_:x rdf:type owl:Restriction. _:x owl:onProperty P. _:x owl:cardinality n."
-			]
-		},
-"qualified exact cardinality": {
-	"scope":"turtle", 
-	"prefix":"/prcqxc",
-	"body": [
-		"_:x rdf:type owl:Restriction. _:x owl:onProperty P. _:x owl:qualifiedCardinality n. _:x owl:onClass C. "
-	]
-},
-
-"maximum cardinality": {
-	"scope":"turtle", 
-	"prefix":"/prcmax",
-	"body": [
+		]
+	},
+	"qualified exact cardinality": {
+		"scope": "turtle",
+		"prefix": "/prcqxc",
+		"body": [
+			"_:x rdf:type owl:Restriction. _:x owl:onProperty P. _:x owl:qualifiedCardinality n. _:x owl:onClass C. "
+		]
+	},
+	"maximum cardinality": {
+		"scope": "turtle",
+		"prefix": "/prcmax",
+		"body": [
 			"_:x rdf:type owl:Restriction. _:x owl:onProperty P. _:x owl:maxCardinality n."
-			]
-		},
-
-"qualified maximum cardinality": {
-	"scope":"turtle", 
-		"prefix":"/prcqmax",  
-		"body":[
+		]
+	},
+	"qualified maximum cardinality": {
+		"scope": "turtle",
+		"prefix": "/prcqmax",
+		"body": [
 			" _:x rdf:type owl:Restriction. _:x owl:onProperty P. _:x owl:maxQualifiedCardinality n. _:x owl:onClass C."
 		]
 	},
-
-		"minimum cardinality": {
-	"scope":"turtle", 
-	"prefix":"/prcmin",
-	"body": [
+	"minimum cardinality": {
+		"scope": "turtle",
+		"prefix": "/prcmin",
+		"body": [
 			"_:x rdf:type owl:Restriction. _:x owl:onProperty P. _:x owl:minCardinality n."
-			]
-		},
-"qualified minimum cardinality": {
-	"scope":"turtle", 
-		"prefix":"/prcqmin",  
-		"body":[
+		]
+	},
+	"qualified minimum cardinality": {
+		"scope": "turtle",
+		"prefix": "/prcqmin",
+		"body": [
 			" _:x rdf:type owl:Restriction. _:x owl:onProperty P. _:x owl:minQualifiedCardinality n. _:x owl:onClass C."
 		]
 	},
-
-"n-ary universal": {
-	"scope":"turtle", 
-	"prefix":"/prdu",
-	"body": [
+	"n-ary universal": {
+		"scope": "turtle",
+		"prefix": "/prdu",
+		"body": [
 			"_:x rdf:type owl:Restriction. _:x owl:onProperties ( R1 … Rn ). _:x owl:allValuesFrom Dn."
-			]
-		},
-"n-ary existential": {
-	"scope":"turtle", 
-	"prefix":"/prde",
-	"body": [
+		]
+	},
+	"n-ary existential": {
+		"scope": "turtle",
+		"prefix": "/prde",
+		"body": [
 			"_:x rdf:type owl:Restriction. _:x owl:onProperties ( R1 … Rn). _:x owl:someValuesFrom Dn."
-			]
-		},
-"property": {
-	"scope":"turtle", 
-	"prefix":"/pv",
-	"body": [
+		]
+	},
+	"inverse property": {
+		"scope": "turtle",
+		"prefix": "/pv",
+		"body": [
 			"_:x owl:inverseOf PN"
-			]
-		},
-"data range complement": {
-	"scope":"turtle", 
-	"prefix":"/drc",
-	"body": [
+		]
+	},
+	"data range complement": {
+		"scope": "turtle",
+		"prefix": "/drc",
+		"body": [
 			"_:x rdf:type rdfs:Datatype. _:x owl:datatypeComplementOf D."
-			]
-		},
-
-"data range intersection": {
-	"scope":"turtle", 
-	"prefix":"/dri",
-	"body": [" _:x rdf:type rdfs:Datatype. _:x owl:intersectionOf (D1…Dn)."
-			]
-		},
-
-"data range union": {
-	"scope":"turtle", 
-	"prefix":"/dru",
-	"body": [
+		]
+	},
+	"data range intersection": {
+		"scope": "turtle",
+		"prefix": "/dri",
+		"body": [
+			" _:x rdf:type rdfs:Datatype. _:x owl:intersectionOf (D1…Dn)."
+		]
+	},
+	"data range union": {
+		"scope": "turtle",
+		"prefix": "/dru",
+		"body": [
 			"_:x rdf:type rdfs:Datatype. _:x owl:unionOf (D1…Dn)."
-			]
-		},
-"literal enumeration": {
-	"scope":"turtle", 
-	"prefix":"/denum",
-	"body": [
+		]
+	},
+	"literal enumeration": {
+		"scope": "turtle",
+		"prefix": "/denum",
+		"body": [
 			"_:x rdf:type rdfs:Datatype. _:x owl:oneOf ( v1 … vn )."
-			]
-		},
-"datatype restriction": {
-	"scope":"turtle", 
-	"prefix":"/drs",
-	"body": [
+		]
+	},
+	"datatype restriction": {
+		"scope": "turtle",
+		"prefix": "/drs",
+		"body": [
 			"_:x rdf:type rdfs:Datatype. _:x owl:onDatatype DN. _:x owl:withRestrictions (_:x1 ... _:xn). _:xj fj vj. j=1…n P1 rdfs:subPropertyOf P2. "
-			]
-		},
-
-		"subproperty": {
-			"scope":"turtle", 
-			"prefix":"/ppsub",
-			"body": [ "P1 rdfs:subPropertyOf P2. "
-					]
-				},        
-"chain inclusion": {
-	"scope":"turtle", 
-	"prefix":"/ppch",
-	"body": [
+		]
+	},
+	"subproperty": {
+		"scope": "turtle",
+		"prefix": "/ppsub",
+		"body": [
+			"P1 rdfs:subPropertyOf P2. "
+		]
+	},
+	"chain inclusion": {
+		"scope": "turtle",
+		"prefix": "/ppch",
+		"body": [
 			"P owl:propertyChainAxiom (P1 … Pn)."
-			]
-		},
-"domain": {
-	"scope":"turtle", 
-	"prefix":"/ppdom",
-	"body": [
+		]
+	},
+	"domain": {
+		"scope": "turtle",
+		"prefix": "/ppdom",
+		"body": [
 			"P rdfs:domain C."
-			]
-		},
-"range": {
-	"scope":"turtle", 
-	"prefix":"/ppran",
-	"body": [
+		]
+	},
+	"range": {
+		"scope": "turtle",
+		"prefix": "/ppran",
+		"body": [
 			"P rdfs:range C."
-			]
-		},
-"properties": {
-	"scope":"turtle", 
-	"prefix":"/ppequ",
-	"body": [
+		]
+	},
+	"equivalent properties": {
+		"scope": "turtle",
+		"prefix": "/ppequ",
+		"body": [
 			"Pj owl:equivalentProperty Pj+1. j=1…n-1"
-			]
-		},
-"properties": {
-	"scope":"turtle", 
-	"prefix":"/ppd",
-	"body": [
+		]
+	},
+	"disjoint properties": {
+		"scope": "turtle",
+		"prefix": "/ppd",
+		"body": [
 			"P1 owl:propertyDisjointWith P2."
-			]
-		},
-"disjoint properties": {
-	"scope":"turtle", 
-	"prefix":"/ppdd",
-	"body": [
+		]
+	},
+	"all disjoint properties": {
+		"scope": "turtle",
+		"prefix": "/ppdd",
+		"body": [
 			"_:x rdf:type owl:AllDisjointProperties. _:x owl:members ( P1 … Pn )."
-			]
-		},
-"properties": {
-	"scope":"turtle", 
-	"prefix":"/ppinv",
-	"body": [
+		]
+	},
+	"inverse properties": {
+		"scope": "turtle",
+		"prefix": "/ppinv",
+		"body": [
 			"P1 owl:inverseOf P2."
-			]
-		},
-"property": {
-	"scope":"turtle", 
-	"prefix":"/ppfun",
-	"body": [
+		]
+	},
+	"functional property": {
+		"scope": "turtle",
+		"prefix": "/ppfun",
+		"body": [
 			"P rdf:type owl:FunctionalProperty."
-			]
-		},
-"functional property": {
-	"scope":"turtle", 
-	"prefix":"/ppinfu",
-	"body": [
+		]
+	},
+	"inverse functional property": {
+		"scope": "turtle",
+		"prefix": "/ppinfu",
+		"body": [
 			"P rdf:type owl:InverseFunctionalProperty."
-			]
-		},
-"property": {
-	"scope":"turtle", 
-	"prefix":"/ppref",
-	"body": [
+		]
+	},
+	"reflexive property": {
+		"scope": "turtle",
+		"prefix": "/ppref",
+		"body": [
 			"P rdf:type owl:ReflexiveProperty."
-			]
-		},
-"property": {
-	"scope":"turtle", 
-	"prefix":"/ppirref",
-	"body": [
+		]
+	},
+	"irreflexive property": {
+		"scope": "turtle",
+		"prefix": "/ppirref",
+		"body": [
 			"P rdf:type owl:IrreflexiveProperty."
-			]
-		},
-"property": {
-	"scope":"turtle", 
-	"prefix":"/ppsym",
-	"body": [
+		]
+	},
+	"symmetric property": {
+		"scope": "turtle",
+		"prefix": "/ppsym",
+		"body": [
 			"P rdf:type owl:SymmetricProperty."
-			]
-		},
-"property": {
-	"scope":"turtle", 
-	"prefix":"/ppasym",
-	"body": [
+		]
+	},
+	"Asymmetric Property": {
+		"scope": "turtle",
+		"prefix": "/ppasym",
+		"body": [
 			"P rdf:type owl:AsymmetricProperty."
-			]
-		},
-"property": {
-	"scope":"turtle", 
-	"prefix":"/pptrans",
-	"body": [
+		]
+	},
+	"Transitive Property": {
+		"scope": "turtle",
+		"prefix": "/pptrans",
+		"body": [
 			"P rdf:type owl:TransitiveProperty"
-			]
-		},
-"equality": {
-	"scope":"turtle", 
-	"prefix":"/aeq",
-	"body": [
+		]
+	},
+	"equality": {
+		"scope": "turtle",
+		"prefix": "/aeq",
+		"body": [
 			"aj owl:sameAs aj+1. j=1…n-1"
-			]
-		},
-
-"prinequality": {
-	"scope":"turtle", 
-	"prefix":"/ane",
-	"body": [
+		]
+	},
+	"prinequality": {
+		"scope": "turtle",
+		"prefix": "/ane",
+		"body": [
 			"a1 owl:differentFrom a2."
-			]
-		},
-"individual inequality": {
-	"scope":"turtle", 
-	"prefix":"/aane",
-	"body": [
+		]
+	},
+	"individual inequality": {
+		"scope": "turtle",
+		"prefix": "/aane",
+		"body": [
 			"_:x rdf:type owl:AllDifferent. _:x owl:members (a1 … an)."
-			]
-		},
-"assertion": {
-	"scope":"turtle", 
-	"prefix":"/ac",
-	"body": [
+		]
+	},
+	"assertion": {
+		"scope": "turtle",
+		"prefix": "/ac",
+		"body": [
 			"a rdf:type C."
-			]
-		},
-"object property assertion": {
-	"scope":"turtle", 
-	"prefix":"/aprop",
-	"body": [
+		]
+	},
+	"object property assertion": {
+		"scope": "turtle",
+		"prefix": "/aprop",
+		"body": [
 			"a1 PN a2."
-			]
-		},
-"object property assertion": {
-	"scope":"turtle", 
-	"prefix":"/anprop",
-	"body": [
+		]
+	},
+	"negative object property assertion": {
+		"scope": "turtle",
+		"prefix": "/anprop",
+		"body": [
 			"_:x rdf:type owl:NegativePropertyAssertion. _:x owl:sourceIndividual a1. _:x owl:assertionProperty P. _:x owl:targetIndividual a2."
-			]
-		},
-"name": {
-	"scope":"turtle", 
-	"prefix":"//l",
-	"body": [
+		]
+	},
+	"name": {
+		"scope": "turtle",
+		"prefix": "//l",
+		"body": [
 			"rdfs:label T"
-			]
-		},
-"comment": {
-	"scope":"turtle", 
-	"prefix":"//c",
-	"body": [
+		]
+	},
+	"comment": {
+		"scope": "turtle",
+		"prefix": "//c",
+		"body": [
 			"rdfs:comment T"
-			]
-		},
-		
-"addition information": {
-	"scope":"turtle", 
-	"prefix":"//ai",
-	"body": ["rdfs:seeAlso T"
-			]
-		},
-
-"agent": {
-	"scope":"turtle", 
-	"prefix":"//da",
-	"body": [
+		]
+	},
+	"addition information": {
+		"scope": "turtle",
+		"prefix": "//ai",
+		"body": [
+			"rdfs:seeAlso T"
+		]
+	},
+	"agent": {
+		"scope": "turtle",
+		"prefix": "//da",
+		"body": [
 			"rdfs:isDefinedBy T"
-			]
-		},
-"information": {
-	"scope":"turtle", 
-	"prefix":"//v",
-	"body": [
+		]
+	},
+	"information": {
+		"scope": "turtle",
+		"prefix": "//v",
+		"body": [
 			"owl:versionInfo T"
-			]
-		},
-"deprecation": {
-	"scope":"turtle", 
-	"prefix":"//dep",
-	"body": ["owl:deprecated T"
-			]
-		},
-"backwards compatibility": {
-	"scope":"turtle", 
-	"prefix":"//bc",
-	"body": ["owl:backwardCompatibleWith T"
-			]
-		},
-
-"incompatibility": {
-	"scope":"turtle", 
-	"prefix":"//incomp",
-	"body": ["owl:incompatibleWith T"
-			]
-		},
-"prior version": {
-	"scope":"turtle", 
-	"prefix":"//pv",
-	"body": ["owl:priorVersion T"
-			]
-		}
+		]
+	},
+	"deprecation": {
+		"scope": "turtle",
+		"prefix": "//dep",
+		"body": [
+			"owl:deprecated T"
+		]
+	},
+	"backwards compatibility": {
+		"scope": "turtle",
+		"prefix": "//bc",
+		"body": [
+			"owl:backwardCompatibleWith T"
+		]
+	},
+	"incompatibility": {
+		"scope": "turtle",
+		"prefix": "//incomp",
+		"body": [
+			"owl:incompatibleWith T"
+		]
+	},
+	"prior version": {
+		"scope": "turtle",
+		"prefix": "//pv",
+		"body": [
+			"owl:priorVersion T"
+		]
+	}
 }
