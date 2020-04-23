@@ -1,0 +1,11 @@
+{
+	"user story": {
+		"scope": "markdown",
+		"prefix": "/us",
+		"body": [
+      "# $1",
+      "As a $2, I want $3, So that $4 $0"
+		],
+		"description": "Generate a simple User story"
+	}
+}
