@@ -1,7 +1,7 @@
 {
 	"user story": {
 		"scope": "markdown",
-		"prefix": "/us",
+		"prefix": "/ais",
 		"body": [
       "# $1",
 			"- As a $2,",
@@ -10,5 +10,17 @@
 			"","$0"
 		],
 		"description": "Generate a simple User story"
+	},
+	"scenario": {
+		"scope": "markdown",
+		"prefix": "/gwt",
+		"body": [
+      "    ## $1",
+			"    - Given $2,",
+			"    - When $3,",
+			"    - then $4",
+			"","$0"
+		],
+		"description": "Generate a simple User story scenario"
 	}
 }
