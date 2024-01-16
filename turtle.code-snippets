@@ -3,7 +3,7 @@
 		"scope": "turtle",
 		"prefix": "/c",
 		"body": [
-			"$1 rdf:type owl:Class $0"
+			"$1 rdf:type owl:Class $0.\n"
 		],
 		"description": "declare a class"
 	},
@@ -11,7 +11,7 @@
 		"scope": "turtle",
 		"prefix": "rlab",
 		"body": [
-			"rdfs:label \"$1\"@en $0"
+			"rdfs:label \"$1\"@en ;\n$0"
 		],
 		"description": "insert an rdfs comment"
 	},
@@ -19,15 +19,29 @@
 		"scope": "turtle",
 		"prefix": "rcom",
 		"body": [
-			"rdfs:comment \"$1\" $0"
+			"rdfs:comment \"$1\" ;\n$0"
 		],
 		"description": "insert an rdfs comment"
+	},
+	"data property": {
+		"scope": "turtle",
+		"prefix": "rdpr",
+		"body": [
+			"$1 rdf:type owl:DatatypeProperty ;",
+			"    rdfs:domain $2 ;",
+			"    rdfs:range $3 ;",
+			"    rdfs:comment \"$4\"@en .\n$0"
+		],
+		"description": "create a datatype property"
 	},
 	"object property": {
 		"scope": "turtle",
 		"prefix": "ropr",
 		"body": [
-			"$1 rdf:type owl:ObjectProperty ; rdfs:comment \"$4\"; rdfs:domain :$2 ; rdfs:range :$3 . $0"
+			"$1 rdf:type owl:ObjectProperty ;",
+			"    rdfs:domain $2 ;",
+			"    rdfs:range $3 ;",
+			"    rdfs:comment \"$4\"@en .\n$0"
 		],
 		"description": "create an object property"
 	},
@@ -256,14 +270,14 @@
 		"scope": "turtle",
 		"prefix": "/ppdom",
 		"body": [
-			"P rdfs:domain C."
+			"$1 rdfs:domain $2 .\n$0"
 		]
 	},
 	"range": {
 		"scope": "turtle",
 		"prefix": "/ppran",
 		"body": [
-			"P rdfs:range C."
+			"$1 rdfs:range $2 .\n$0"
 		]
 	},
 	"equivalent properties": {
@@ -389,7 +403,7 @@
 		"scope": "turtle",
 		"prefix": "//l",
 		"body": [
-			"rdfs:label T"
+			"rdfs:label \"$1\"@en ;$0"
 		]
 	},
 	"comment": {
